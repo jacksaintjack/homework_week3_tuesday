@@ -8,6 +8,7 @@ var averagePrice = priceList.reduce(function(count, total){
 });
 
 var answerOne = averagePrice / priceList.length;
+console.log("****ANSWER Three ****")
 console.log("The average Price is " + answerOne.toFixed(2));
 
 
@@ -23,8 +24,12 @@ var answerTwoTitle = targetTwo.map(function(ans){
 var answerTwoPrice = targetTwo.map(function(ans){
   return ans.price;
 });
+console.log("****ANSWER TWO****")
+console.log('"Items that cost between $14.00 USD and $18.00 USD"')
+var ansnwerTwo = answerTwoTitle.forEach(function(a){
+  console.log("Title: " + a);
+});
 
-console.log('"Items that cost between $14.00 USD and $18.00 USD" ' + answerTwoTitle);
 
 ///////////////////// 3. ///////////////////////////////
 
@@ -32,22 +37,34 @@ var currencyGBP = items.filter(function(curr){
   return curr.currency_code === "GBP";
 });
 
-var answerThree = currencyGBP.map(function(ans){
+var answerTitle = currencyGBP.map(function(ans){
   return ans.title;
 });
 
-console.log(answerThree);
+var answerPrice = currencyGBP.map(function(p){
+    return p.price;
+})
+
+console.log("****ANSWER Three****")
+
+var answerThree = answerTitle.forEach(function(t){
+    console.log(t + " costs " + "£" + answerPrice);
+});
 
 ///////////////////// 4. ///////////////////////////////
 var targetData = items.filter(function(mat){
   return mat.materials.indexOf('wood');
 });
 
-var answerFour = targetData.map(function(ans){
+var targetTitle = targetData.map(function(ans){
   return ans.title;
 });
 
-console.log(answerFour);
+console.log("****ANSWER FOUR****")
+var answerFour = targetTitle.forEach(function(t){
+  console.log(t + " is made of wood");
+});
+
 
 ///////////////////// 5. ///////////////////////////////
 
@@ -55,22 +72,30 @@ var targetFiveOne = items.filter(function(greater){
   return greater.materials.length >= 8;
 });
 
-var answerFive = targetFiveOne.map(function(ans){
+var answerFiveTitle = targetFiveOne.map(function(ans){
   return ans.title;
 });
 
-console.log(answerFive);
+var materialsUsed = targetFiveOne.map(function(mat){
+  return mat.materials;
+});
+
+//Console logs the information in way that materials are in a list
+console.log("****ANSWER FIVE****");
+console.log(answerFiveTitle[0] +" Has " + materialsUsed[0].length + " used materials ");
+var materialListOne = materialsUsed[0].forEach(function(list){
+  console.log(list);
+});
+console.log(answerFiveTitle[1] + " Has " + materialsUsed[1].length + " used materials ");
+var materialListTwo = materialsUsed[1].forEach(function(list){
+  console.log(list);
+});
+
 
 ///////////////////// 6. ///////////////////////////////
 
 var targetSixOne = items.filter(function(maker){
   return maker.who_made === 'i_did';
 });
+  console.log("****ANSWER SIX****")
   console.log(targetSixOne.length + " were made by their sellers");
-
-
-//////For Funzies
-var answerSix = targetSixOne.forEach(function(ans){
-  console.log("**THESE WHERE DONE TO TEST forEach**      " + ans.title);
-
-});
